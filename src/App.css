@@ -1,38 +1,113 @@
 .App {
   text-align: center;
+ 
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav{
+  font-size:24px;
+  display:flex;
+  gap:24px;
+  margin:20px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.apptitle{
+  background-color: brown;
+  font-size: 40px;
+  margin-top: 0;
+  height: 60px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movie-list{
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  
+  justify-content: space-around;
+  
+}
+.movie-container{
+  width: 280px;
+  height: min-content;
+  margin-bottom: 50px;
+
+}
+.movie-container:hover{
+transition: all 0.3s  ease-in-out;
+  transform:scale(1.05);
+}
+.movie-poster{
+  margin-top:0px;
+  height:340px;
+  width:280px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.movie-name{
+   font-family: 'Roboto', sans-serif;
+   font-size: 24px;
+   max-width: 75%;
+}
+.movie-name,.movie-rating{
+margin:0;
+
+}
+
+.movie-spec{
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding-right: 2px;
+  padding-left: 2px;
 }
-
-.App-link {
-  color: #61dafb;
+.movie-rating{
+  font-size: 18px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.movie-summary{
+  text-align: left;
+  margin:10px 5px;
+}
+.counter-container{
+  display: flex;
+  gap: 10px;
+}
+.like-dislike{
+  font-size: 18px;
+}
+.addmoviedata{
+  display: flex;
+  flex-direction:column ;
+ 
+  gap: 10px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  padding:15px;
+  width:300px;
+  margin-left: 480px;
+  margin-right: 480px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  align-content: center;
+}
+@media(max-width:380px){
+  .addmoviedata{
+margin-left: 40px;
+width:245px;
+}
+}
+.welcome{
+  font-size:90px;
+}
+.show-hide{
+  display: flex;
+  align-items: flex-end;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+.like-dislike{
+  margin-left: 5px;
+  font-size: 20px;
+}
+.movie-detail-container{
+  padding: 24px;
+  max-width: 50rem;
+}
+.icon{
+  display: flex;
 }
