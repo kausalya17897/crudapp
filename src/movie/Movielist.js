@@ -6,19 +6,20 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useHistory} from 'react-router';
 import {useEffect ,useState} from 'react';
 
-
+const API_URL="https://movie-node-app.herokuapp.com";
+//const API_URL="https://61681515ba841a001727c589.mockapi.io";
 export function Movielist() {
   const[movies,setMovies]=useState([]);
 
   const getMovies=()=>{
-    fetch("https://61681515ba841a001727c589.mockapi.io/movie")
+    fetch(`${API_URL}/movies`)
     .then((data)=>data.json())
     .then((mvs)=>setMovies(mvs));
   };
 useEffect(getMovies,[]);
 //called 1time because of empty dependency
 const deleteMovie=(id)=>{
-  fetch(`https://61681515ba841a001727c589.mockapi.io/movie/${id}`,{
+  fetch(`${API_URL}/movies/${id}`,{
 method:"DELETE",
   }).then(()=>getMovies());
   //.getmovie to refresh

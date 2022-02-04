@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-function colorbox() {
+export function colorbox() {
   const [color, setColor] = useState("red");
   const styles = { backgroundColor: color,marginTop:"200px" };
   return (
@@ -11,3 +11,4 @@ function colorbox() {
     </div>
   );
 }
+;
