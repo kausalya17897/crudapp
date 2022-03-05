@@ -3,6 +3,7 @@ import { useState ,useEffect} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useHistory} from 'react-router';
+import { API_URL } from './global_constants';
 
 //higher order component
 export function AddMovie({ movies, setMovies }) {
@@ -21,7 +22,7 @@ const history=useHistory();
     };
     
   //copied the movielist and add new movie
-  fetch(`https://61681515ba841a001727c589.mockapi.io/movie`,{
+  fetch(`${API_URL}`,{
     method:"POST",
     body:JSON.stringify(newmovie),
     headers:{

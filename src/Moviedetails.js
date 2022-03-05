@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useParams,useHistory } from "react-router-dom";
 import { useEffect,useState } from 'react';
+import { API_URL } from './global_constants';
 
 export function Moviedetails({ movies }) {
   const history=useHistory();
@@ -9,7 +10,7 @@ export function Moviedetails({ movies }) {
   
   const[movie,setMovie]=useState({});
 useEffect(()=>{
-  fetch(`https://61681515ba841a001727c589.mockapi.io/movie/${id}`,{
+  fetch(`${API_URL}/${id}`,{
     method:"GET",
   })
   .then((data)=>data.json())

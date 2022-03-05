@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useParams,useHistory } from "react-router-dom";
+import { API_URL } from './global_constants';
 
 //higher order component
 export function Editmovie() {
@@ -12,7 +13,7 @@ export function Editmovie() {
   //const movie = movies[id];
   const[movie,setMovie]=useState(null);
 useEffect(()=>{
-  fetch(`https://61681515ba841a001727c589.mockapi.io/movie/${id}`,{
+  fetch(`${API_URL}/movies/${id}`,{
   method:"GET",
 })
   .then((data)=>data.json())
@@ -37,7 +38,7 @@ const updatedMovie = {
    name, poster, rating, summary,trailer,
   };
 
-  fetch(`https://61681515ba841a001727c589.mockapi.io/movie/${movie.id}`,{
+  fetch(`${API_URL}movies/${movie.id}`,{
     method:"PUT",
     body:JSON.stringify(updatedMovie),
     headers:{

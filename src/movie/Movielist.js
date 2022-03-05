@@ -5,8 +5,9 @@ import { IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useHistory} from 'react-router';
 import {useEffect ,useState} from 'react';
+import { API_URL} from '../global_constants'
 
-const API_URL="https://movie-node-app.herokuapp.com";
+
 //const API_URL="https://61681515ba841a001727c589.mockapi.io";
 export function Movielist() {
   const[movies,setMovies]=useState([]);

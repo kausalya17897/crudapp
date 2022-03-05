@@ -16,6 +16,7 @@ import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Loginform } from './Loginform';
 
+import { API_URL } from './global_constants';
 export default function App() {
   // eslint-disable-next-line
  //name:"",poster:"",rating:"",summary:""
@@ -35,7 +36,7 @@ const theme = createTheme({
   },
 });
 React.useEffect(()=>{
-  fetch("https://61681515ba841a001727c589.mockapi.io/movie")
+  fetch(`${API_URL}`)
   .then((data)=>data.json())
   .then((mvs)=>setMovies(mvs));
 },[]);
