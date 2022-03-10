@@ -1,0 +1,31 @@
+.logincontainer{
+    margin-left: 600px;
+    margin-top: 100px;
+}
+.signupcontainer{
+    margin-left: 600px;
+    margin-top: 100px;
+}
+
+.settings-container{
+    border: 1px solid gray;
+    border-radius: 10px;
+    width:380px;
+    height: 260px;
+    padding: 20px;
+}
+.settings-header{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.form-group{
+    margin: 30px;
+}
+.form-group-forgot{
+    margin: 30px;
+}
+.signup{
+    margin-left: 155px;
+}

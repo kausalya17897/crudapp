@@ -14,21 +14,46 @@ import Toolbar from '@mui/material/Toolbar';
 import {useHistory} from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Loginform } from './Loginform';
-
 import { API_URL } from './global_constants';
+import Signup from './Signup';
+import Login from './Login';
+import { useEffect } from 'react';
 export default function App() {
-  // eslint-disable-next-line
- //name:"",poster:"",rating:"",summary:""
-  
+  const [data,setData]=useState();
+  const [token,setToken]=useState(localStorage.getItem("x-auth-token"))
+  const history=useHistory();
+
+  const logout=()=>{
+    localStorage.removeItem("x-auth-token");
+    setToken(null)
+    history.push("/login")
+  }
+  const movieview = () => {
 
 
+    if (!token) {
+        history.push("/login");
+    }
+fetch(`${API_URL}/movies`,{ method: "GET",
+//fetch(`/fleetandpricing`,{ method: "GET",
+headers: {
+    "x-auth-token": token
+}
+}).then((res)=>res.json())
+.then((a)=>{
+    console.log("a",a)
+setData(a)
+});
+};
+console.log("data",data)
+useEffect(movieview, []);
 
-//const name=["kausi","madhu","prisci"];
+console.log("gh",data);
+
 
 const [movies,setMovies]=useState();
 //
-const history=useHistory();
+
 const [mode,setMode]=useState("dark")
 const theme = createTheme({
   palette: {
@@ -54,13 +79,21 @@ Home</Button>
 Movies</Button>
 <Button variant="text"color="inherit" onClick={()=>history.push("/Addmovie")}>
 Add movies</Button>
-<Button variant="text"color="inherit" onClick={()=>history.push("/colorbox")}>
-colorbox</Button>
+
 
 <Button  style={{marginLeft:"auto"}}variant="text"color="inherit" onClick={()=>setMode(mode==="light"?"dark":"light")}>
 Light mode </Button>
+{
+  !token ?(
+    <>
 <Button  style={{marginRight:"10px"}}variant="text"color="inherit" onClick={()=>history.push("/signup")}>
 Sign up </Button>
+<Button  style={{marginRight:"10px"}}variant="text"color="inherit" onClick={()=>history.push("/login")}>
+Login </Button>
+</>
+  ):(<Button  style={{marginRight:"10px"}}variant="text"color="inherit" onClick={logout}>
+  Logout </Button>)
+}
   </Toolbar>
   </AppBar>
  
@@ -83,12 +116,12 @@ Sign up </Button>
   <Route path="/AddMovie">
   <AddMovie/>
   </Route>
-  <Route path="/colorbox">
-  <colorbox/>
+  <Route path="/signup">
+  <Signup/>
   </Route>
   
-  <Route path="/signup">
-  <Loginform/>
+  <Route path="/login">
+  <Login setToken={setToken}/>
   </Route>
   
   <Route path="**">

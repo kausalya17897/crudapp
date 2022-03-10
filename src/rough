@@ -1,0 +1,35 @@
+<div className="settings-container">
+      <h3 className="settings-header">Sign Up for Free</h3>
+      <div className="form-container">
+
+        <div className="form-group">
+          <label htmlFor="username">Username : </label>
+          <input name="username" className="form-control" value={username} onChange={(event) => setUsername(event.target.value)} placeholder="username" required></input>
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password : </label>
+          <input name="password" className="form-control" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="password" pattern=" " required></input>
+        </div>
+        <button className="signup" onClick={() => postUserData()}>Signup</button>
+      </div>
+    </div>
+
+
+    <div className="settings-container">
+        <h3 className="settings-header">Login</h3>
+        <h3>{message ? message : ""}</h3>
+        <div className="form-container">
+          <div className="form-group">
+            <label htmlFor="username">Username : </label>
+            <input name="username" className="form-control" value={username} onChange={(event) => setUsername(event.target.value)} placeholder="username"></input>
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password : </label>
+            <input name="password" className="form-control" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="password"></input>
+          </div>
+          <div className="form-group-forgot">
+            <p className="forgot">Forgot Password?</p>
+          </div>
+          <button type="submit" className="signup" onClick={() => postLoginData()}>LOG IN</button>
+        </div>
+      </div>
