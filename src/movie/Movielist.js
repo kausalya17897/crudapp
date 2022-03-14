@@ -40,7 +40,7 @@ method:"DELETE",
           poster={poster}
           rating={rating}
           summary={summary}
-          id={id} 
+          id={_id} 
           //we are printing movelist  which doesnot match the same index and setting in setMovies
           deletebutton={
           <IconButton onClick={()=>deleteMovie(id)}
