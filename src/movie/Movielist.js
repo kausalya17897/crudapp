@@ -13,14 +13,18 @@ export function Movielist() {
   const[movies,setMovies]=useState([]);
 
   const getMovies=()=>{
-    fetch(`${API_URL}/movies`)
+    fetch("https://movieserverreview.herokuapp.com/movies")
     .then((data)=>data.json())
-    .then((mvs)=>setMovies(mvs));
+    .then((mvs)=>setMovies(mvs))
+    
+    
   };
+ 
 useEffect(getMovies,[]);
+console.log("setmovies",setMovies)
 //called 1time because of empty dependency
 const deleteMovie=(id)=>{
-  fetch(`${API_URL}/movies/${id}`,{
+  fetch(`https://movieserverreview.herokuapp.com/movies/${id}`,{
 method:"DELETE",
   }).then(()=>getMovies());
   //.getmovie to refresh
@@ -28,22 +32,23 @@ method:"DELETE",
 
   
   const history=useHistory();
-  console.log("setmovies",setMovies)
+  
     console.log("cghg",movies);
   return (
     
     <div className="movie-list">
         
-      {movies.map(({ name, poster, rating, summary,id },index) =>(
+      {movies.map(({ name, poster, rating, summary,_id },index) =>(
         <Movie
           name={name}
           poster={poster}
           rating={rating}
           summary={summary}
+          key={index}
           id={_id} 
           //we are printing movelist  which doesnot match the same index and setting in setMovies
           deletebutton={
-          <IconButton onClick={()=>deleteMovie(id)}
+          <IconButton onClick={()=>deleteMovie(_id)}
           className="deletebutton"
           color="error"
           aria-label="delete">
@@ -51,7 +56,7 @@ method:"DELETE",
           </IconButton>}
 
           editbutton={
-           <IconButton onClick={()=>history.push("/movies/edit/"+id) }
+           <IconButton onClick={()=>history.push("/movies/edit/"+_id) }
            className="editbutton"
            style={{marginLeft:"auto"}}
            color="primary"

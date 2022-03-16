@@ -13,7 +13,7 @@ export function Editmovie() {
   //const movie = movies[id];
   const[movie,setMovie]=useState(null);
 useEffect(()=>{
-  fetch(`${API_URL}/movies/${id}`,{
+  fetch("https://movieserverreview.herokuapp.com/movies/"+id,{
   method:"GET",
 })
   .then((data)=>data.json())
@@ -38,7 +38,7 @@ const updatedMovie = {
    name, poster, rating, summary,trailer,
   };
 
-  fetch(`${API_URL}movies/${movie.id}`,{
+  fetch("https://movieserverreview.herokuapp.com/movies/"+movie._id,{
     method:"PUT",
     body:JSON.stringify(updatedMovie),
     headers:{

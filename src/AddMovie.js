@@ -17,14 +17,14 @@ const history=useHistory();
 
   const addmovie = () => {
     console.log("adding.....", name, rating, poster, summary,trailer);
-    const newmovie = {
+    const newMovie = {
       name, poster, rating, summary,trailer
     };
     
   //copied the movielist and add new movie
-  fetch(`${API_URL}`,{
+  fetch(`https://movieserverreview.herokuapp.com/movies`,{
     method:"POST",
-    body:JSON.stringify(newmovie),
+    body:JSON.stringify(newMovie),
     headers:{
       "Content-Type":"application/json",
     },

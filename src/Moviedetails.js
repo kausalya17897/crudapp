@@ -10,12 +10,12 @@ export function Moviedetails({ movies }) {
   
   const[movie,setMovie]=useState({});
 useEffect(()=>{
-  fetch(`${API_URL}/${id}`,{
+  fetch("https://movieserverreview.herokuapp.com/movies/"+id,{
     method:"GET",
   })
   .then((data)=>data.json())
   .then((mvs)=>setMovie(mvs))
-},[]);
+},[id]);
   const styles = { color: movie.rating > 8 ? "green" : "red", fontWeight: "bold" };
   console.log("hnjknkj",movie);
   // to extract content useParams is used 

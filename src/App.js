@@ -29,12 +29,10 @@ export default function App() {
     history.push("/login")
   }
   const movieview = () => {
-
-
     if (!token) {
         history.push("/login");
     }
-fetch(`${API_URL}/movies`,{ method: "GET",
+fetch(`https://movieserverreview.herokuapp.com/movies`,{ method: "GET",
 //fetch(`/fleetandpricing`,{ method: "GET",
 headers: {
     "x-auth-token": token
@@ -43,9 +41,9 @@ headers: {
 .then((a)=>{
     console.log("a",a)
 setData(a)
-});
+}).catch(err=>console.log("err",err))
 };
-console.log("data",data)
+
 useEffect(movieview, []);
 
 console.log("gh",data);
@@ -60,12 +58,7 @@ const theme = createTheme({
     mode: mode,
   },
 });
-React.useEffect(()=>{
-  fetch(`${API_URL}`)
-  .then((data)=>data.json())
-  .then((mvs)=>setMovies(mvs));
-},[]);
-console.log("gh",movies);
+
 return(
   <ThemeProvider theme={theme}>
     <Paper elevation={0} >

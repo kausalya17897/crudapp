@@ -50,10 +50,10 @@ return;
         <div className="form-group">
           <label htmlFor="password">Password : </label>
           <input name="password" className="form-control" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="password" pattern=" " required></input>
-        </div>
+        </div>{error}
         <button className="signup" onClick={() => postUserData()}>Signup</button>
     </div>
     </div>
     
-  )
+  );
 }
