@@ -75,7 +75,7 @@ Add movies</Button>
 
 
 <Button  style={{marginLeft:"auto"}}variant="text"color="inherit" onClick={()=>setMode(mode==="light"?"dark":"light")}>
-Light mode </Button>
+{mode==="light"?"dark":"light"} mode </Button>
 {
   !token ?(
     <>
